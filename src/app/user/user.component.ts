@@ -20,7 +20,7 @@ export class UserComponent implements OnInit{
     public userService: UserService,
     public authService: AuthService,
     private route: ActivatedRoute,
-    private location : Location,
+    private location: Location,
     private fb: FormBuilder
   ) {
 
@@ -33,7 +33,7 @@ export class UserComponent implements OnInit{
         this.user = data;
         this.createForm(this.user.name);
       }
-    })
+    });
   }
 
   createForm(name) {
@@ -42,19 +42,19 @@ export class UserComponent implements OnInit{
     });
   }
 
-  save(value){
+  save(value) {
     this.userService.updateCurrentUser(value)
     .then(res => {
       console.log(res);
-    }, err => console.log(err))
+    }, err => console.log(err));
   }
 
-  logout(){
+  logout() {
     this.authService.doLogout()
     .then((res) => {
       this.location.back();
     }, (error) => {
-      console.log("Logout error", error);
+      console.log('Logout error', error);
     });
   }
 }
